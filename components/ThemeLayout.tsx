@@ -1,5 +1,7 @@
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { PaperProvider } from 'react-native-paper';
+
 
 
 export default function ThemeLayout({ children }: { children: React.ReactNode }) {
@@ -8,8 +10,10 @@ export default function ThemeLayout({ children }: { children: React.ReactNode })
     const theme = colorScheme === 'dark' ? DarkTheme : DefaultTheme;
 
     return (
-        <ThemeProvider value={theme}>
-            {children}
-        </ThemeProvider>
+        <PaperProvider>
+            <ThemeProvider value={theme}>
+                {children}
+            </ThemeProvider>
+        </PaperProvider>
     );
 }
