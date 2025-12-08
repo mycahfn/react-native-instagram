@@ -1,16 +1,21 @@
-import { Feather } from '@expo/vector-icons';
-import { TouchableOpacity } from "react-native";
+import { Image } from "expo-image";
+import { TouchableOpacity, View } from "react-native";
 import { ThemedText } from "./shared/ThemedText";
 
 
 export default function LanguageSelector() {
 
-    const language = "English"
+    const language = "Español"
 
     return (
-        <TouchableOpacity  style={{ flexDirection: "row" }} onPress={() => console.log('Cambiar idioma')}>
-            <ThemedText>{language}</ThemedText>
-            <Feather name="chevron-down" size={18} color="#98a8b5" />
-        </TouchableOpacity>
+        <View>
+            <TouchableOpacity style={{ flexDirection: "row", width: "100%", justifyContent: "center", alignItems: "center", gap: 4 }} onPress={() => console.log('Cambiar idioma')}>
+                <ThemedText style={{ fontSize: 14, color: "#a8a8a8" }}>{language}</ThemedText>
+                <Image 
+                    source={require("@/assets/icons/arrowdown.svg")} 
+                    style={{ width: 14, height: 12, transform: [{ rotate: '180deg' }]}} 
+                />
+            </TouchableOpacity>
+        </View>
     )
 }

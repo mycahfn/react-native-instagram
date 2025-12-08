@@ -2,6 +2,7 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { PaperProvider } from 'react-native-paper';
 
+import { Stack } from 'expo-router';
 
 
 export default function ThemeLayout({ children }: { children: React.ReactNode }) {
@@ -12,7 +13,11 @@ export default function ThemeLayout({ children }: { children: React.ReactNode })
     return (
         <PaperProvider>
             <ThemeProvider value={theme}>
-                {children}
+                <Stack screenOptions={{
+                    headerShown: false 
+                }}>
+                    {children}
+                </Stack>
             </ThemeProvider>
         </PaperProvider>
     );
