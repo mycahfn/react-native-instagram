@@ -1,3 +1,4 @@
+import useSignInForm from '@/hooks/useSignInForm'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import React, { useState } from "react"
 import { StyleSheet, TouchableOpacity, View } from "react-native"
@@ -5,14 +6,12 @@ import { TextInput } from "react-native-paper"
 import IconComponent from "./shared/IconComponent"
 import { ThemedText } from "./shared/ThemedText"
 
-
 export default function FormAuthSignin() {
-    const [name, setName] = useState('')
-    const [password, setPassword] = useState('')
+    const { name, password, setName, setPassword, handleLogin } = useSignInForm()
     const [showPassword, setShowPassword] = useState(false)
-    const [nameFocused, setNameFocused] = useState(false) // Nuevo estado para foco
+    const [nameFocused, setNameFocused] = useState(false) 
     const [passwordFocused, setPasswordFocused] = useState(false)
-
+   
     return (
         <View style={{ width: "100%", flex: 1 }}>
             <View style={{ gap: 16 }}>
@@ -28,7 +27,7 @@ export default function FormAuthSignin() {
                     onChangeText={setName}
                     onFocus={() => setNameFocused(true)}
                     onBlur={() => setNameFocused(false)}
-                    right={<TextInput.Icon style={{opacity: name && nameFocused ? 1 : 0}} icon={() => <IconComponent name="close" />} onPress={() => setName('')}/>}
+                    right={<TextInput.Icon style={{opacity: name && nameFocused ? 1 : 0 }} icon={() => <IconComponent name="close" />} onPress={() => setName('')}/>}
                     autoCapitalize="none"
                 />
                </View>
@@ -54,7 +53,7 @@ export default function FormAuthSignin() {
                </View>
             </View>
             <View style={{ marginTop: 12 }}>
-                <TouchableOpacity style={styles.signinButton}>
+                <TouchableOpacity style={styles.signinButton} onPress={handleLogin}>
                     <ThemedText style={{ fontWeight: 500 }}>Iniciar sesión</ThemedText>
                 </TouchableOpacity>
             </View>
