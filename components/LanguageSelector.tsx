@@ -147,10 +147,6 @@ export default function LanguageSelector() {
      listWrapper: {
          marginTop: 12,
      },
-     list: {
-         // opcional: si quieres limitar la altura de la lista dentro del borde, puedes usar maxHeight aquí
-         maxHeight: 320,
-     },
      separator: {
          height: 1,
          backgroundColor: "#233238",
@@ -165,8 +161,8 @@ export default function LanguageSelector() {
         height: 20,
     },
     grabber: {
-        width: 48,
-        height: 5,
+        width: 42,
+        height: 6,
         borderRadius: 3,
         backgroundColor: "#cbd2da", // tono gris oscuro sobre el fondo del modal
         opacity: 0.9,
