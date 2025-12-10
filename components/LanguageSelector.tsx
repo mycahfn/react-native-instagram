@@ -77,6 +77,12 @@ export default function LanguageSelector() {
                     <View style={{ flex: 1, justifyContent: "flex-end" }}>
                         <TouchableWithoutFeedback>
                             <View style={{ backgroundColor: "#162127", borderTopLeftRadius: 24, borderTopRightRadius: 24, maxHeight: "75%", minHeight: "75%" }}>
+
+                                {/* Grabber: barra pequeña centrada para indicar que el modal se puede arrastrar (solo estilo) */}
+                                <View style={styles.grabberContainer}>
+                                    <View style={styles.grabber} />
+                                </View>
+
                                 <TouchableOpacity
                                     onPress={() => setModalVisible(false)}
                                     style={{ paddingLeft: 16, paddingRight: 32, width: 60.5, height: 43.8, marginVertical: 2.5, justifyContent: "center" }}>
@@ -135,7 +141,8 @@ export default function LanguageSelector() {
          borderWidth: 1,
          borderColor: "#758694",
          borderRadius: 24,
-         overflow: "hidden"
+         overflow: "hidden",
+         marginBottom: 16
      },
      listWrapper: {
          marginTop: 12,
@@ -149,4 +156,19 @@ export default function LanguageSelector() {
          backgroundColor: "#233238",
          marginHorizontal: 8
      }
+
+    /* Estilos para la barra superior (grabber) */
+    ,grabberContainer: {
+        alignItems: "center",
+        paddingBottom: 4,
+        paddingTop: 8,
+        height: 20,
+    },
+    grabber: {
+        width: 48,
+        height: 5,
+        borderRadius: 3,
+        backgroundColor: "#cbd2da", // tono gris oscuro sobre el fondo del modal
+        opacity: 0.9,
+    }
  });
