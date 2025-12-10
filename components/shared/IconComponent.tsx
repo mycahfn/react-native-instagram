@@ -17,19 +17,19 @@ interface IconComponentProps {
     name: TabIconName;
     width?: number;
     height?: number;
+    color?: string;
 }
 
-export default function IconComponent({ name, width = 24, height = 24 }: IconComponentProps) {
+export default function IconComponent({ name, width = 24, height = 24, color="rgb(245, 245, 245)" }: IconComponentProps) {
 
     const src = IconsPath[name]
 
-    return <Image source={src} style={{width, height}} />;
+    return <Image source={src} style={{width, height, tintColor: color }} />;
 }
 
 const styles = StyleSheet.create({
     icon: {
         width: 24,
-        height: 24,
-        tintColor: "#F5F5F5",
+        height: 24
     }
 })

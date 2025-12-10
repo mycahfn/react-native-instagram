@@ -18,6 +18,7 @@ const isFirebaseAuthError = (err: any): err is FirebaseAuthError => {
 export default function useSignInForm() {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const { logIn } = useAuthStore()
 
@@ -36,6 +37,7 @@ export default function useSignInForm() {
 
 
             try {
+                setIsLoading(true)
                 const response = await signInWithEmailAndPassword(FIREBASE_AUTH, name, password)
                 logIn()
                 return response
@@ -52,6 +54,8 @@ export default function useSignInForm() {
                 } else {
                     console.error("An unexpected error occurred:", error);
                 }
+            } finally {
+                setIsLoading(false)
             }
         }
         signIn()
@@ -59,5 +63,5 @@ export default function useSignInForm() {
     };
 
 
-    return { name, setName, password, setPassword, handleLogin }
+    return { name, setName, password, setPassword, handleLogin, isLoading }
 }
