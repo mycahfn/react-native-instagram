@@ -178,7 +178,7 @@ export default function LanguageSelector() {
                                         scrollEventThrottle={16} // <-- Importante para la fluidez
                                         contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 8 }}
                                         showsVerticalScrollIndicator={true}
-                                        style={{ maxHeight: screenHeight * 0.75 - 70 }}
+                                        
                                     >
                                         <View style={{ width: "100%" }}>
                                             <ThemedText style={{ fontWeight: "500" as any, fontSize: 24, paddingVertical: 8 }}>Selecciona tu idioma</ThemedText>
