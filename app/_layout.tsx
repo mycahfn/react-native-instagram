@@ -15,6 +15,7 @@ export default function RootLayout() {
         </Stack.Protected>
         <Stack.Protected guard={false}>
           <Stack.Screen name="auth" options={{ headerShown: false }} />
+          <Stack.Screen name="notifications" options={{ headerShown: false }} />
         </Stack.Protected>
     </ThemeLayout>
   );
