@@ -2,7 +2,6 @@ import ThemeLayout from "@/components/ThemeLayout";
 import { useThemeColor } from '@/hooks/use-theme-color';
 
 import { Stack } from "expo-router";
-import { StatusBar } from 'expo-status-bar';
 
 export const unstable_settings = {
   anchor: '(tabs)',
@@ -28,7 +27,6 @@ export default function RootLayout() {
           <Stack.Screen name="auth" options={{ headerShown: false }} />
           <Stack.Screen name="notifications" options={{ headerShown: false }} />
         </Stack.Protected>
-        <StatusBar style="auto" />
     </ThemeLayout>
   );
 }

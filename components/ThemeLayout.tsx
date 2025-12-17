@@ -3,6 +3,7 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { PaperProvider } from 'react-native-paper';
 
 import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
 
 export default function ThemeLayout({ children }: { children: React.ReactNode }) {
@@ -18,6 +19,7 @@ export default function ThemeLayout({ children }: { children: React.ReactNode })
                 }}>
                     {children}
                 </Stack>
+                <StatusBar style="auto" />
             </ThemeProvider>
         </PaperProvider>
     );
