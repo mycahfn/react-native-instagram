@@ -14,7 +14,7 @@ export default function RootLayout() {
   
   return (
     <ThemeLayout>
-       <Stack.Protected guard={true}>
+       <Stack.Protected guard={false}>
           <Stack.Screen 
             name="(tabs)" 
             options={{ 
@@ -24,7 +24,7 @@ export default function RootLayout() {
             />
           
         </Stack.Protected>
-        <Stack.Protected guard={false}>
+        <Stack.Protected guard={true}>
           <Stack.Screen name="auth" options={{ headerShown: false }} />
           <Stack.Screen name="notifications" options={{ headerShown: false }} />
         </Stack.Protected>
