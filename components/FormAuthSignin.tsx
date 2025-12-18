@@ -8,7 +8,7 @@ import { ThemedText } from "./shared/ThemedText"
 
 
 export default function FormAuthSignin() {
-    const { name, password, setName, setPassword, handleLogin, isLoading } = useSignInForm()
+    const { name, password, setName, setPassword, handleLogin, handleSignUp, isLoading } = useSignInForm()
     const [showPassword, setShowPassword] = useState(false)
     const [nameFocused, setNameFocused] = useState(false)
     const [passwordFocused, setPasswordFocused] = useState(false)

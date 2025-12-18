@@ -5,14 +5,24 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 const isWeb = Platform.OS === "web";
 
+type UserData = {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+  photoURL: string | null;
+  emailVerified: boolean;
+};
+
 type UserState = {
   isLoggedIn: boolean;
   shouldCreateAccount: boolean;
   hasCompletedOnboarding: boolean;
   isVip: boolean;
   _hasHydrated: boolean;
+  userData: UserData | null;
   logIn: () => void;
   logOut: () => void;
+  setUserData: (data: UserData | null) => void;
   completeOnboarding: () => void;
   resetOnboarding: () => void;
   logInAsVip: () => void;
@@ -27,6 +37,7 @@ export const useAuthStore = create(
       hasCompletedOnboarding: false,
       isVip: false,
       _hasHydrated: false,
+      userData: null,
       logIn: () => {
         set((state) => {
           return {
@@ -50,6 +61,15 @@ export const useAuthStore = create(
             ...state,
             isVip: false,
             isLoggedIn: false,
+            userData: null,
+          };
+        });
+      },
+      setUserData: (data: UserData | null) => {
+        set((state) => {
+          return {
+            ...state,
+            userData: data,
           };
         });
       },

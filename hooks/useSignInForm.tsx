@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/utils/authStore";
 import { FIREBASE_AUTH } from "@/utils/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential } from "firebase/auth";
 import { useState } from "react";
 import { Alert } from 'react-native';
 
@@ -20,7 +20,7 @@ export default function useSignInForm() {
     const [password, setPassword] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
-    const { logIn } = useAuthStore()
+    const { logIn, setUserData } = useAuthStore()
 
     const handleLogin = () => {
         const signIn = async () => {
@@ -39,7 +39,18 @@ export default function useSignInForm() {
             try {
                 setIsLoading(true)
                 const response = await signInWithEmailAndPassword(FIREBASE_AUTH, name, password)
+                const user = response.user
+                
+                setUserData({
+                    uid: response.user.uid,
+                    email: response.user.email,
+                    displayName: response.user.displayName,
+                    photoURL: response.user.photoURL,
+                    emailVerified: response.user.emailVerified,
+                })
+
                 logIn()
+        
                 return response
             } catch (error) {
                 console.log(error)
@@ -62,6 +73,28 @@ export default function useSignInForm() {
 
     };
 
+    const handleSignUp = () => {
+        createUserWithEmailAndPassword(FIREBASE_AUTH, name, password)
+        .then((userCredential: UserCredential) => {
+          // Signed up 
+          const user = userCredential.user
+          setUserData({
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            emailVerified: user.emailVerified,
+          })
+          logIn()
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage)
+        });
+      
+    }
 
-    return { name, setName, password, setPassword, handleLogin, isLoading }
+
+    return { name, setName, password, setPassword, handleLogin, handleSignUp, isLoading }
 }

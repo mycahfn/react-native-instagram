@@ -25,6 +25,9 @@ const screenOptions = {
 }
 
 export default function TabLayout() {
+
+
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>

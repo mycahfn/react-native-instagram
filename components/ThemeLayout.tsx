@@ -14,9 +14,7 @@ export default function ThemeLayout({ children }: { children: React.ReactNode })
     return (
         <PaperProvider>
             <ThemeProvider value={theme}>
-                <Stack screenOptions={{
-                    headerShown: false 
-                }}>
+                <Stack>
                     {children}
                 </Stack>
                 <StatusBar style="auto" />
